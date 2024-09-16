@@ -42,7 +42,17 @@ let strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
 passport.use(strategy);
 
 app.use(express.json());
-app.use(cors());
+// ===
+// app.use(cors());
+// ===
+
+// Configure CORS to allow requests from the React app origin
+app.use(cors({
+    origin: 'http://localhost:3000', // allow requests from this origin
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true // if you need to include cookies with the request
+}));
+
 // add passport as application-level middleware
 app.use(passport.initialize());
 

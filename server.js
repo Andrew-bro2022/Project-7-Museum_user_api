@@ -43,7 +43,7 @@ passport.use(strategy);
 
 app.use(express.json());
 // ===
-app.use(no-cors());
+app.use(cors());
 // ===
 
 // Configure CORS to allow requests from the React app origin
